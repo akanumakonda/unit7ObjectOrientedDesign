@@ -15,6 +15,7 @@ public class ID_Card extends Card
         super(n);
         idNumber = id;
     }
+
     public String format()
     {
         String info = super.format();
@@ -22,5 +23,19 @@ public class ID_Card extends Card
         return info;
     }
 
+    public boolean equals(Object other)
+    {
+        //return getName().equals(other.getName()) && idNumber.equals(other.idNumber)) ;
+        //The more complicated way to do it
+        // check if this object and the other object are both instances of the same class
+        if ( this.getClass() == other.getClass())
+        {
+            // since both objects are instances of IDCard, it is okay to cast other to an IDCard reference
+            ID_Card otherIDCard = (ID_Card) other;
+            boolean isEqual = super.equals( otherIDCard );
+            return isEqual && idNumber.equals( other.idNumber);
+        }
+        return false;
+    }
 
 }

@@ -7,7 +7,7 @@ public class BankAccount implements Measurable
    private double balance;
 
    /**
-      Constructs a bank account with a zero balance.
+      Constructs a bank account with a zero balance
    */
    public BankAccount()
    {   
@@ -15,7 +15,7 @@ public class BankAccount implements Measurable
    }
 
    /**
-      Constructs a bank account with a given balance.
+      Constructs a bank account with a given balance
       @param initialBalance the initial balance
    */
    public BankAccount(double initialBalance)
@@ -24,7 +24,7 @@ public class BankAccount implements Measurable
    }
 
    /**
-      Deposits money into the bank account.
+      Deposits money into the bank account
       @param amount the amount to deposit
    */
    public void deposit(double amount)
@@ -33,7 +33,7 @@ public class BankAccount implements Measurable
    }
 
    /**
-      Withdraws money from the bank account.
+      Withdraws money from the bank account
       @param amount the amount to withdraw
    */
    public void withdraw(double amount)
@@ -42,7 +42,7 @@ public class BankAccount implements Measurable
    }
 
    /**
-      Gets the current balance of the bank account.
+      Gets the current balance of the bank account
       @return the current balance
    */
    public double getBalance()

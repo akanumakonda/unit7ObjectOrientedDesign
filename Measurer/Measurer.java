@@ -1,5 +1,5 @@
 /**
-   Describes any class whose objects can measure other objects.
+   Describes any class whose objects can measure other objects. Used when can't manipulate other object classes
 */
 public interface Measurer
 {

@@ -21,6 +21,32 @@ public class Billfold
 
     }
     
-
+    public void addCard( Card c)
+    {
+        if (card1 == null)
+        {
+            card1 = c;
+        }
+        else
+        {
+            card2 = c;
+        }
+        
+    }
+    public String formatCards()
+    {
+        String str = "";
+       if (card1 != null)
+       {
+           str += ("[" + super.format());
+           
+        }
+       else if( card2 != null)
+       {
+           str +=  ("|" + super.format() + "]");
+        }
+       
+    }
+    
 
 }
