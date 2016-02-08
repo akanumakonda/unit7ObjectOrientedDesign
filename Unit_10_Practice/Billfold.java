@@ -19,7 +19,7 @@ public class Billfold
         // initialise instance variables
 
     }
-    
+
     public void addCard(Card c)
     {
         if( card1 == null)
@@ -31,7 +31,7 @@ public class Billfold
             card2 = c;
         }
     }
-    
+
     public String formatCards()
     {
         if ( card2 != null)
@@ -42,22 +42,24 @@ public class Billfold
         else if ( card1 != null)
         {
             String str = (card1 + "|" );
-           
+
             return str;
         }
         else
         {
             return "";
         }
-       
+
     }
-    
+
     public int getExpiredCardCount()
     {
         int count = 0;
-        if ( this.card1 
+        if ( this.card1 )
+        {
+
+        }
     }
-    
 
 
 }
