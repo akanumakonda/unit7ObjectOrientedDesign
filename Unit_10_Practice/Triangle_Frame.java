@@ -1,7 +1,7 @@
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList<E>;
+
 //call drawOval(int x, int y, int width, int height)
 /**
  * Write a description of class Triangle here.
@@ -14,25 +14,30 @@ public class Triangle_Frame extends JFrame
     /** description of instance variable x (add comment for each instance variable) */
       public int x;
       public int y;
+      public int count;
       private static final int FRAME_WIDTH = 300;
       private static final int FRAME_HEIGHT = 400;
       
       private TriangleComponent scene;
-      public ArrayList<Integers> points;
      class MousePressListener implements MouseListener
      {
-        public static void main(String args[])
-         {
-             Mouselistener listener = new Mouselistener()
-         }
+
          public void mousePressed(MouseEvent event)
          {
              int x = event.getX();
-             int y = event.getY();
-             scene.drawDot(x,y);
-             points.add(x);
-             points.add(y);
+             int y = event.getY(); 
+             
             }
-            public void mouseReleased(MouseEvent event) {}
+    }
+    public Triangle_Frame()
+    {
+        scene = new Triangle_Component();
+        add(scene);
+        
+        setSize(FRAME_WIDTH, FRAME_HEIGHT);
+        
+        MousePressListener listener = new MouseListener();
+       scene.addMouseListener(listener);
+       
     }
 }
