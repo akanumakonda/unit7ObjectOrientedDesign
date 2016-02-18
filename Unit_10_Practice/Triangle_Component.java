@@ -30,8 +30,6 @@ public class Triangle_Component
     public void paintComponent(Graphics g)
     {
         Graphics2D g2 = (Graphics2D) g;
-        points.add(x);
-        points.add(y);
         if (points.size() == 2)
         {
             Ellipse2D dot = new Ellipse2D(1,1, points[0], points[1]);
@@ -52,9 +50,10 @@ public class Triangle_Component
         }
     }
             
-        
+    public void drawStuff(int x, int y)
+    {
         points.add(x);
         points.add(y);
-
+    }
 }
 
