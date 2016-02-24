@@ -9,7 +9,6 @@
 public interface Shape
 {
     /** description of instance variable x (add comment for each instance variable) */
-    private int x;
 
     /**
      * Default constructor for objects of class Shape

@@ -9,10 +9,8 @@ import java.awt.BorderLayout;
 public class DrawingEditor extends JFrame
 {
     /** description of instance variable x (add comment for each instance variable) */
-    private JFrame frame;
     private ControlPanel controls;
     private DrawingPanel canvas;
-    private BorderLayout lay;
     
     private static final int FRAME_WIDTH = 500;
     private static final int FRAME_HEIGHT = 500;
@@ -21,19 +19,16 @@ public class DrawingEditor extends JFrame
      */
     public DrawingEditor()
     {
-        // initialise instance variables
-        canvas = new DrawingPanel();
-        controls = new ControlPanel( canvas);
+         canvas = new DrawingPanel();
+         controls = new ControlPanel( canvas);
         
-        frame = new JFrame();
-        frame.setTitle("Drawing Editor");
-        frame.setSize (FRAME_WIDTH, FRAME_HEIGHT);
-        frame.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-        
-        lay = new BorderLayout();
-        lay.addLayoutComponent(canvas, BorderLayout.SOUTH);
-        lay.addLayoutComponent(controls, BorderLayout.SOUTH);
+        this.setTitle("Drawing Editor");
+        this.setSize (FRAME_WIDTH, FRAME_HEIGHT);
+        this.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
+        this.add(controls);
+        this.add( controls, BorderLayout.SOUTH);
+        this.add( canvas, BorderLayout.CENTER );
         
     }
 
