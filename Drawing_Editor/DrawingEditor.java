@@ -19,8 +19,8 @@ public class DrawingEditor extends JFrame
      */
     public DrawingEditor()
     {
-         canvas = new DrawingPanel();
-         controls = new ControlPanel( canvas);
+        canvas = new DrawingPanel();
+        controls = new ControlPanel( canvas);
         
         this.setTitle("Drawing Editor");
         this.setSize (FRAME_WIDTH, FRAME_HEIGHT);
