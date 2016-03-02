@@ -1,39 +1,48 @@
-
-
+import java.awt.geom.Point2D.Double;
+import java.awt.Color;
 /**
  * Write a description of class Shape here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public interface Shape
+public abstract class Shape
 {
     /** description of instance variable x (add comment for each instance variable) */
-
+    private Point2D.Double center;
+    private Color color;
+    private Double radius;
     /**
      * Default constructor for objects of class Shape
      */
-    public Shape()
+    public Shape(Point2D.Double center, double radius, Color color)   
     {
         // initialise instance variables
-        x = 0;
+        this.center =  center;
+        this.radius = radius;
+        this.color = color;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
-     *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
-     */
-    public int sampleMethod(int y)
+    public Point2D.Double getCenter()
     {
-        // put your code here
-        return x+y;
+        return center;
     }
-
+    
+    public double getRadius()
+    {
+        return radius;
+    }
+    
+    public void move(double x, double y)
+    {
+        center.setLocation(x, y);
+    }
+    public void setRadius(double r)
+    {
+        radius = r;
+    }
+    public abstract boolean isInside(Point2D.Double point);
+    public abstract void draw(Graphics2D g2, boolean filled);
+    
+    
 }
