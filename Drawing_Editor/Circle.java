@@ -9,32 +9,44 @@
 public class Circle extends Shape
 {
     /** description of instance variable x (add comment for each instance variable) */
-    private int x;
-
+    private Ellipse2D.Double newCircle;
+    private double width;
+    private double height;
     /**
      * Default constructor for objects of class Circle
      */
     public Circle()
     {
         // initialise instance variables
-        x = 0;
+        width = 2*super.getRadus();
+        height = width;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
-     *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
-     */
-    public int sampleMethod(int y)
+    public boolean isInside(Point2D.Double point)
+    if (newCircle.contains(point) == true)
     {
-        // put your code here
-        return x+y;
+        return true;
+    }
+    return false;
+    }
+    public void draw(Graphics2D g2, boolean filled)
+    {
+        newCircle = new Ellipse2D.Double(x, y , width , height);
+        if (filled == true)
+        {
+            g2.setPaint(shapeColor);
+            g2.fill(newCircle)
+        }
+        else
+        {
+            g2.setPaint(Color.WHITE);
+            g2.fill(newCircle);
+            g2.setPaint(shapeColor);
+            g2.draw(newCircle)
+            
+        }
+        
+        
     }
 
 }
