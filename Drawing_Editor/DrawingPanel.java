@@ -52,6 +52,8 @@ public class DrawingPanel extends JPanel
 
         public void mouseReleased(MouseEvent event)
         {
+            curPicked = false;
+            repaint();
         }
 
         public void mouseEntered(MouseEvent event)
@@ -61,12 +63,17 @@ public class DrawingPanel extends JPanel
         public void mouseExited(MouseEvent event)
         {
         }
+        public void mouseClicked(MouseEvent event)
+        {
+            }
     }
     class MouseMotionListener implements MouseMotionListener
     {
         public void mouseDragged(MouseEvent event)
         {
+            //if ( activeShape != null)
             activeShape.move(event.getX(), event.getY());
+            repaint();
         }
 
     }
@@ -83,7 +90,12 @@ public class DrawingPanel extends JPanel
 
     public void pickColor()
     {
-        JColorChooser.showDialog(this, "Select a Color", WHITE)
+       Color initCoor = JColorChooser.showDialog(this, "Select a Color", WHITE)
+       if (initColor != null)
+       {
+           curCOlor = initCOlor;
+       }
+       }
     }
 
     public void addCircle()
@@ -114,6 +126,7 @@ public class DrawingPanel extends JPanel
             }
             
         }
-        activeShape.draw(g2, false);
+        if(activeShape != null)
+        activeShape.draw(g2, !isSelcted);
     }
 }
