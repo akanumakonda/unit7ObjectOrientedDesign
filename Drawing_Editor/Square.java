@@ -31,7 +31,7 @@ public class Square extends Shape
      * @param    y    description of parameter y
      * @return    description of the return value
      */
-    public int sampleMethod(int y)
+    public void draw(Graphics2D g2, boolean filled)
     {
         // put your code here
         return x+y;
