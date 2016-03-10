@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.lang.Object;
 
 
 /**
@@ -16,9 +17,7 @@ import java.awt.Color;
 public class ControlPanel extends JPanel
 {
     /** description of instance variable x (add comment for each instance variable) */
-//     private JButton color;
-//     private JButton circle;
-//     private JButton square;
+
     private DrawingPanel canvas;
     private Color color;
     private JPanel colorstuff;
@@ -37,7 +36,7 @@ public class ControlPanel extends JPanel
         this.add(circle);
         this.add(square);
         Color current = canvas.getColor();
-        JPanel.setBackground(WHITE);
+        colorstuff.setBackground(Color.WHITE);
 
         
     }
@@ -73,8 +72,8 @@ public class ControlPanel extends JPanel
         private String name;
         public void actionPerformed(ActionEvent event)
         {
-            color = canvas.pickColor();
-            colorStuff.setBackground(color);
+            canvas.pickColor();
+            colorstuff.setBackground(color);
         }
     }
     public class CircleListener implements ActionListener
