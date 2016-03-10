@@ -1,5 +1,9 @@
+
 import java.awt.geom.Point2D.Double;
 import java.awt.Color;
+import java.awt.geom.Point2D;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 /**
  * Write a description of class Shape here.
  * 
@@ -10,8 +14,8 @@ public abstract class Shape
 {
     /** description of instance variable x (add comment for each instance variable) */
     private Point2D.Double center;
-    private Color color;
-    private Double radius;
+    public Color color;
+    private double radius;
     /**
      * Default constructor for objects of class Shape
      */
