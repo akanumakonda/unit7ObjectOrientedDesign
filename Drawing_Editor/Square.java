@@ -1,5 +1,9 @@
-
-
+import java.awt.geom.Point2D.Double;
+import java.awt.Color;
+import java.awt.geom.Point2D;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
 /**
  * Write a description of class Square here.
  * 
@@ -9,32 +13,47 @@
 public class Square extends Shape
 {
     /** description of instance variable x (add comment for each instance variable) */
+    private Rectangle newRectangle;
+    private int width;
+    private int height;
     private int x;
-
+    private int y;
+    
     /**
      * Default constructor for objects of class Square
      */
-    public Square()
+    public Square(Point2D.Double center, double radius, Color color)   
     {
         // initialise instance variables
-        x = 0;
+        super(center, radius, color);
+        x = (int) (center.getX() - radius);
+        y = (int) ( center.getY() - radius);
+        width = ( int) radius;
+        height = (int) radius;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
-     *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
-     */
-    public void draw(Graphics2D g2, boolean filled)
+    public boolean isInside(Point2D.Double point)
     {
-        // put your code here
-        return x+y;
+          if (newRectangle.contains(point.getX(), point.getY()))
+        {
+            return true;
+        }
+        return false;
     }
-
+    public  void draw(Graphics2D g2, boolean filled)
+    {
+        newRectangle = new Rectangle(x, y , width , height);
+        if (filled == true)
+        {
+            g2.setPaint(color);
+            g2.fill(newRectangle);
+        }
+        else
+        {
+            g2.setPaint(Color.WHITE);
+            g2.fill(newRectangle);
+            g2.setPaint(color);
+            g2.draw(newRectangle);
+        }
+    }
 }
