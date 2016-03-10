@@ -1,13 +1,15 @@
 import javax.swing.JPanel;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JColorChooser;
 import java.awt.Dimension;
+import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Double;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-
+import java.awt.Color; 
 /**
  * Write a description of class DrawingPanel here.
  * 
@@ -21,7 +23,7 @@ public class DrawingPanel extends JPanel
     public Shape activeShape;
     public boolean curPicked;
     private Color curColor;
-    private Point2D.Double;
+    private Point2D.Double point;
     /**
      * Default constructor for objects of class DrawingPanel
      */
@@ -30,12 +32,11 @@ public class DrawingPanel extends JPanel
         // initialise instance variables
         MouseListener listener = new MousePressListener();
         this.addMouseListener(listener);
-        this.setBackground(Color.White);
-        curColor = BLUE;
+        this.setBackground(Color.WHITE);
+        curColor = Color.BLUE;
         listShapes= new ArrayList();
-        Point2D.Double = new Point2D.Double(500/2, 500/2);
+        point = new Point2D.Double(500/2, 500/2);
     }
-
     class MousePressListener implements MouseListener
     {
         public void mousePressed(MouseEvent event)
@@ -63,11 +64,13 @@ public class DrawingPanel extends JPanel
         public void mouseExited(MouseEvent event)
         {
         }
+
         public void mouseClicked(MouseEvent event)
         {
-            }
+        }
     }
-    class MouseMotionListener implements MouseMotionListener
+
+    class MouseMotion implements MouseMotionListener
     {
         public void mouseDragged(MouseEvent event)
         {
@@ -75,9 +78,13 @@ public class DrawingPanel extends JPanel
             activeShape.move(event.getX(), event.getY());
             repaint();
         }
+        
+        public void mouseMoved(MouseEvent event)
+        {
+        }
 
     }
-
+    
     public Color getColor()
     {
         return curColor;
@@ -85,22 +92,23 @@ public class DrawingPanel extends JPanel
 
     public Dimension getPreferredSize()
     {
-        Dimension dim = new Dimension( 500, 500)
+        Dimension dim = new Dimension( 500, 500);
+        return dim;
     }
 
     public void pickColor()
     {
-       Color initCoor = JColorChooser.showDialog(this, "Select a Color", WHITE)
-       if (initColor != null)
-       {
-           curCOlor = initCOlor;
-       }
-       }
+        JColorChooser.showDialog(this, "Select a Color", Color.WHITE);
+//         if (initColor != null)
+//         {
+//             curColor = initColor;
+//         }
     }
+
 
     public void addCircle()
     {
-        Circle circle = Circle( Point, 15.5, curColor);
+        Circle circle = new Circle( point, 15.5, curColor);
         listShapes.add(circle);
         activeShape = circle;
         repaint();
@@ -108,7 +116,7 @@ public class DrawingPanel extends JPanel
 
     public void addSquare()
     {
-        Square square = Square( Point, 15.5, curColor);
+        Square square = new Square( point, 15.5, curColor);
         listShapes.add(square);
         activeShape = square;
         repaint();
@@ -120,13 +128,12 @@ public class DrawingPanel extends JPanel
         Graphics2D g2 = (Graphics2D) g;
         for (Shape s: listShapes)
         {
-            if (listShapes[i] != activeShape)
+            if (s != activeShape)
             {
-                listShapes[i].draw(g2, true);
+                s.draw(g2, true);
             }
-            
+
         }
-        if(activeShape != null)
-        activeShape.draw(g2, !isSelcted);
+        activeShape.draw(g2, false);
     }
 }
