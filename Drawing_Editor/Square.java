@@ -40,6 +40,7 @@ public class Square extends Shape
         }
         return false;
     }
+    
     public  void draw(Graphics2D g2, boolean filled)
     {
         newRectangle = new Rectangle(x, y , width , height);

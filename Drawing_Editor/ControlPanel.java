@@ -2,11 +2,9 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.lang.Object;
-
 
 /**
  * Write a description of class ControlPanel here.
@@ -19,9 +17,8 @@ public class ControlPanel extends JPanel
     /** description of instance variable x (add comment for each instance variable) */
 
     private DrawingPanel canvas;
-    private Color color;
     private JPanel colorstuff;
-    
+
     /**
      * Default constructor for objects of class ControlPanel
      */
@@ -32,62 +29,39 @@ public class ControlPanel extends JPanel
         JButton color = new JButton("Pick Color");
         JButton circle = new JButton("Add Circle");
         JButton square = new JButton("Add Square");
+        colorstuff = new JPanel();
         this.add(color);
+        this.add(colorstuff);
         this.add(circle);
         this.add(square);
         Color current = canvas.getColor();
         colorstuff.setBackground(Color.WHITE);
+        ClickListener listener = new ClickListener();
+        color.addActionListener(listener);
+        circle.addActionListener(listener);
+        square.addActionListener(listener);
 
-        
     }
+    public class ClickListener implements ActionListener
+    {
 
-    /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
-     *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
-     */
-    public static void main(String[] args)
-    {
-        // put your code here
-        //JButton color = new JButton("Pick Color");
-        //JButton circle = new JButton("Add Circle");
-        //JButton square = new JButton("Add Square");
-        //JPanel panel = new JPanel();
-        //panel.add(color);
-        //panel.add(circle);
-        //panel.add(square);
-        //Color current = canvas.getColor();
-        
-        //ClickListener listener = new ClickListener();
-        //color.addActionListener(listener);
-    }
-    public class ColorListener implements ActionListener
-    {
-        private String name;
         public void actionPerformed(ActionEvent event)
         {
-            canvas.pickColor();
-            colorstuff.setBackground(color);
-        }
-    }
-    public class CircleListener implements ActionListener
-    {
-        public void actionPerformed(ActionEvent event)
-        {
-            canvas.addCircle();
-        }
-    }
-    public class SquareListenr implements ActionListener
-    {
-        public void actionPerformed(ActionEvent event)
-        {
-            canvas.addSquare();
+            if (event.getActionCommand() == "Pick Color")
+            {
+                canvas.pickColor();
+                colorstuff.setBackground(canvas.getColor());
+            }
+            else if (event.getActionCommand() == "Add Circle")
+            {
+
+                canvas.addCircle();
+            }
+            else if (event.getActionCommand() == "Add Square")
+            {
+
+                canvas.addSquare();
+            }
         }
     }
 

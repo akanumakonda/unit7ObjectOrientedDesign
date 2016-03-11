@@ -34,7 +34,7 @@ public class DrawingPanel extends JPanel
         this.addMouseListener(listener);
         this.setBackground(Color.WHITE);
         curColor = Color.BLUE;
-        listShapes= new ArrayList();
+        listShapes= new ArrayList<Shape>();
         point = new Point2D.Double(500/2, 500/2);
     }
     class MousePressListener implements MouseListener
@@ -98,17 +98,19 @@ public class DrawingPanel extends JPanel
 
     public void pickColor()
     {
-        JColorChooser.showDialog(this, "Select a Color", Color.WHITE);
-//         if (initColor != null)
-//         {
-//             curColor = initColor;
-//         }
+        JColorChooser choose = new JColorChooser();
+        curColor = JColorChooser.showDialog(this, "Select a Color", Color.WHITE);
+         //if (initColor != null)
+        // {
+        //     curColor = initColor;
+         //   }
     }
 
 
     public void addCircle()
     {
-        Circle circle = new Circle( point, 15.5, curColor);
+        activeShape = new Circle( point, 15.5, curColor);
+        Circle circle = (Circle) activeShape;
         listShapes.add(circle);
         activeShape = circle;
         repaint();
@@ -116,7 +118,8 @@ public class DrawingPanel extends JPanel
 
     public void addSquare()
     {
-        Square square = new Square( point, 15.5, curColor);
+        activeShape = new Square( point, 15.5, curColor);
+        Square square = (Square) activeShape;
         listShapes.add(square);
         activeShape = square;
         repaint();
@@ -134,6 +137,6 @@ public class DrawingPanel extends JPanel
             }
 
         }
-        activeShape.draw(g2, false);
+        //activeShape.draw(g2, false);
     }
 }
